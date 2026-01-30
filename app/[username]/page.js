@@ -6,9 +6,9 @@ const Username = async ({ params }) => {
 
   return (
     <>
-      <div className='cover relative'>
+      <div className='cover'>
         <img className='object-cover w-full' src="cover.png" alt="" />
-        <div className=' -bottom-18 absolute right-[46%] border-2 border-black rounded-full'>
+        <div className=' bottom-80 absolute right-[46%] border-2 border-black rounded-full'>
           <img className='rounded-full' width={123} height={123} src="profile.png" alt="" />
         </div>
       </div>
@@ -28,15 +28,22 @@ const Username = async ({ params }) => {
             {/* show list of all the supporter as a leader board */}
             <h2 className='text-2xl font-bold my-5'>Supporter</h2>
             <ul className='mx-5'>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
-              <li className='my-1'>Arun give $1000 to mrBeast</li>
+              <li className='my-2 flex items-center gap-2'>
+                <img width={30} src="avatar.gif" alt="" />
+                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
+              </li>
+              <li className='my-2 flex items-center gap-2'>
+                <img width={30} src="avatar.gif" alt="" />
+                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
+              </li>
+              <li className='my-2 flex items-center gap-2'>
+                <img width={30} src="avatar.gif" alt="" />
+                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
+              </li>
+              <li className='my-2 flex items-center gap-2'>
+                <img width={30} src="avatar.gif" alt="" />
+                <span>Arun give <span className='font-bold'>$1000</span> to mrBeast with a message "love you bro 😍"</span>
+              </li>
             </ul>
           </div>
           <div className="makepayment w-1/2 bg-slate-100 rounded-lg p-10">
@@ -45,8 +52,8 @@ const Username = async ({ params }) => {
               <input type="text" className='w-full p-3 rounded-lg bg-slate-200' placeholder='Enter Name' />
               <input type="text" className='w-full p-3 rounded-lg bg-slate-200' placeholder='Enter Message' />
               <div className='felx space-x-5'>
-              <input type="text" className='w-[48%] p-3 rounded-lg bg-slate-200' placeholder='Enter Amount' />
-              <button className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[48%] text-center leading-5'>Pay</button>
+                <input type="text" className='w-[65%] p-3 rounded-lg bg-slate-200' placeholder='Enter Amount' />
+                <button className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[30%] text-center leading-5'>Pay</button>
               </div>
             </div>
             <div className="flex gap-3 mt-5">
