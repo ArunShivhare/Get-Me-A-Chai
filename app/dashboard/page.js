@@ -3,6 +3,7 @@ import React from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
 import { fetchuser, updateProfile } from '@/actions/useraction'
 
 const Dashboard = () => {
@@ -28,14 +29,23 @@ const Dashboard = () => {
   }
 
   const handlesubmit = async (e) => {
-    e.preventDefault()
+    // e.preventDefault()
 
     if (!session?.user?.name) return
 
     await update()
     await updateProfile(form, session.user.name)
 
-    alert("Profile Updated Successfully")
+    toast('Profile Updated Successfully!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   const handleChange = (e) => {
@@ -44,6 +54,19 @@ const Dashboard = () => {
 
   return (
     <>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light" />
+      {/* Same as */}
+      <ToastContainer />
       <div className="min-h-screen flex justify-center items-start pt-20 px-4 py-20">
         <div className="w-full max-w-2xl bg-white border rounded-2xl shadow-lg p-8">
 
@@ -56,7 +79,7 @@ const Dashboard = () => {
           </p>
 
           {/* Form */}
-          <form className="space-y-6" onSubmit={handlesubmit}>
+          <form className="space-y-6" action={handlesubmit}>
 
             {/* Name */}
             <div>
@@ -120,11 +143,11 @@ const Dashboard = () => {
             {/* Avatar */}
             <div>
               <label className="block text-sm font-medium mb-1">
-                Avatar Image URL
+                Cover Image URL
               </label>
               <input onChange={handleChange}
-                name="avatar"
-                value={form.avatar || ""}
+                name="coverpic"
+                value={form.coverpic || ""}
                 type="text"
                 placeholder="https://..."
                 className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 outline-none"
@@ -139,15 +162,15 @@ const Dashboard = () => {
 
               <div className="space-y-4">
                 <input onChange={handleChange}
-                  name="key_id"
-                  value={form.key_id || ""}
+                  name="razorpayid"
+                  value={form.razorpayid || ""}
                   type="text"
                   placeholder="Razorpay Key ID"
                   className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 outline-none"
                 />
                 <input onChange={handleChange}
-                  name="key_secret"
-                  value={form.key_secret || ""}
+                  name="razorpayssecret"
+                  value={form.razorpayssecret || ""}
                   type="password"
                   placeholder="Razorpay Secret"
                   className="w-full border rounded-lg px-4 py-2 focus:ring-2 focus:ring-purple-500 outline-none"

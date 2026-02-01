@@ -6,7 +6,10 @@ import User from "@/models/user"
 
 export const initiate = async (amount, to_username, paymentform) => {
     await connectDB()
-    var instance = new Razorpay({ key_id: process.env.NEXT_PUBLIC_KEY_ID, key_secret: process.env.KEY_SECRET })
+    let user = await User.findOne({ username: to_username })
+    const secret = user.razorpaysecret
+    const id = user.razorpayid
+    var instance = new Razorpay({ key_id: id, key_secret: secret })
 
     // instance.orders.create({
     //     amount: 50000,
@@ -26,48 +29,48 @@ export const initiate = async (amount, to_username, paymentform) => {
     let x = await instance.orders.create(options)
 
     //creare a payment object which show the pending payment in the database
-    await Payment.create({oid: x.id, name: paymentform.name, to_user: to_username, message: paymentform.message, amount: amount})
+    await Payment.create({ oid: x.id, name: paymentform.name, to_user: to_username, message: paymentform.message, amount: amount / 100 })
 
     return x
 }
 
 export const fetchuser = async (username) => {
     await connectDB()
-    let u = await User.findOne({username: username})
+    let u = await User.findOne({ username: username })
 
-    if(!u){
+    if (!u) {
         return null;
     }
 
-    let user = u.toObject({flattenObjectIds: true})
+    let user = u.toObject({ flattenObjectIds: true })
     return user;
 }
 
 export const fetchpayments = async (username) => {
     await connectDB()
     //find all payments soerted by amount in descending order
-    let payments = await Payment.find({to_user: username}).sort({amount: -1}).lean()
+    let payments = await Payment.find({ to_user: username, done: true }).sort({ amount: -1 }).lean()
     // let payments = await Payment.find({to_user: username}).sort({ createdAt: -1 })
     return payments;
 }
 
 export const updateProfile = async (data, oldusername) => {
     await connectDB()
-    let ndata = Object.fromEntries(data)
+    let ndata = Object.fromEntries(Object.entries(data))
 
     // If the username is being updated, check if username is available
     if (oldusername !== ndata.username) {
         let u = await User.findOne({ username: ndata.username })
         if (u) {
             return { error: "Username already exists" }
-        }   
-        // await User.updateOne({email: ndata.email}, ndata)
-        // // Now update all the usernames in the Payments table 
-        // await Payment.updateMany({to_user: oldusername}, {to_user: ndata.username})
-        
-    }
-    // else{
+        }
         await User.updateOne({email: ndata.email}, ndata)
-    // }
+        // Now update all the usernames in the Payments table 
+        await Payment.updateMany({to_user: oldusername}, {to_user: ndata.username})
+
+    }
+    else{
+    await User.updateOne({ email: ndata.email }, ndata)
+    }
 
 }
