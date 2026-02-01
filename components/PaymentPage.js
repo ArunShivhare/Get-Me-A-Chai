@@ -131,7 +131,7 @@ const PaymentPage = ({ username }) => {
                             <input onChange={handlechange} value={paymentform.message} name='message' type="text" className='w-full p-3 rounded-lg bg-slate-200' placeholder='Enter Message' />
                             <div className='felx space-x-5'>
                                 <input onChange={handlechange} value={paymentform.amount} name='amount' type="text" className='w-[65%] p-3 rounded-lg bg-slate-200' placeholder='Enter Amount' />
-                                <button onClick={() => pay(Number(paymentform.amount))} className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[30%] text-center leading-5'>Pay</button>
+                                <button onClick={() => pay(Number(paymentform.amount)*100)} className='cursor-pointer bg-linear-to-br from-purple-200 to-blue-300 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-4 py-3.5 w-[30%] text-center leading-5'>Pay</button>
                             </div>
                         </div>
                         <div className="flex gap-3 mt-5">
