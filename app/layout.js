@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Get Me A Chai - Found Your Project With Chai",
+  title: "Chai & Fund - Found Your Project With Chai",
   description: "This website is a crowdfounding plateform for creators.",
 };
 

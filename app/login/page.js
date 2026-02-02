@@ -10,7 +10,7 @@ const Login = () => {
   const router = useRouter()
 
   useEffect(() => {
-    document.title = "Login - Get Me A Chai"
+    document.title = "Login - Chai & Fund"
   }, [])
 
   useEffect(() => {
