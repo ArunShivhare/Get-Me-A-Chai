@@ -5,14 +5,16 @@ export default function Home() {
   return (
     <>
       {/* HEAD SECTION */}
-      <section className="min-h-[50vh] flex items-center px-6 h-5 py-10">
-        <div className="container mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <section className="min-h-[50vh] flex items-center px-6 py-10">
+        <div className="container mx-auto grid md:grid-cols-2 gap-10 md:px-30 items-center">
 
           {/* Left */}
           <div className="space-y-5">
-            <div className="flex items-center gap-3 text-4xl md:text-5xl font-bold">
-              <h1>Get Me A Chai</h1>
-              <img src="/tea.gif" width={50} alt="" />
+            <div className="flex items-center gap-5 text-4xl md:text-5xl font-bold">
+              <h1 className="font-bold text-3xl md:text-5xl tracking-tight">
+                Chai <span className="text-purple-600">&</span> Fund
+              </h1>
+              <img src="/tea.gif" width={50} alt="" className="bg-purple-300 rounded-full"/>
             </div>
 
             <p className="text-gray-600 text-lg">
@@ -40,10 +42,11 @@ export default function Home() {
           </div>
 
           {/* Right */}
-          <div className="flex justify-center">
+          <div className="relative flex justify-center">
+            <div className="absolute -z-10 h-44 w-44 rounded-full bg-purple-400/20 blur-3xl"></div>
             <img
-              src="/group.gif"
-              alt=""
+              src="/homepage.gif"
+              alt="Support creators"
               className="w-[260] md:w-[320]"
             />
           </div>

@@ -6,7 +6,7 @@ import Login from '@/app/login/page'
 
 const Navbar = () => {
   const { data: session } = useSession()
-  
+
   // if(session) {
   //   return <>
   //     Signed in as {session.user.email} <br/>
@@ -15,9 +15,11 @@ const Navbar = () => {
   // }
   return (
     <nav className='bg-slate-50 flex justify-between px-4 md:h-12 items-center'>
-      <div className="logo font-bold text-lg flex gap-2 justify-center items-center">
-        <span>GetMeAChai !</span>
-        <img src="/tea.gif" width={30} alt="" />
+      <div className="logo font-bold text-xl flex gap-2 justify-center items-center">
+        <h1 className="font-bold tracking-tight">
+          Chai <span className="text-purple-600">&</span> Fund
+        </h1>
+        <img src="/tea.gif" width={30} alt="" className='bg-purple-300 rounded-full' />
       </div>
       {/* <ul className='flex justify-between gap-5'>
         <li>Home</li>
