@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";  
+import Link from "next/link";
 
 const About = () => {
     return (
@@ -129,11 +129,18 @@ const About = () => {
                     <p className="text-gray-700 mb-4">
                         Ready to turn your passion into something bigger?
                     </p>
-                    <Link href="/login">
-                        <div className="cursor-pointer inline-block bg-linear-to-br from-purple-600 to-blue-500 text-white px-8 py-3 rounded-full font-medium">
-                            Start Your Journey 
-                        </div>
-                    </Link>
+                    <div className="flex justify-center gap-3 mt-8">
+                        <Link href="/login">
+                            <div className="cursor-pointer inline-block bg-linear-to-br from-purple-600 to-blue-500 text-white px-8 py-3 rounded-full font-medium">
+                                Start Your Journey
+                            </div>
+                        </Link>
+                        <Link href="/">
+                            <button className="cursor-pointer px-6 py-2.5 rounded-full border border-gray-300 hover:bg-gray-100">
+                                Back to Home
+                            </button>
+                        </Link>
+                    </div>
                 </div>
 
             </div>

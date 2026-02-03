@@ -157,7 +157,7 @@ const PaymentPage = ({ username }) => {
                 </div>
             </div> */}
 
-            <div className="cover mt-5 relative w-full">
+            <div className="cover mt-2 relative w-full">
                 <img
                     src={currentUser.coverpic || "/cover.png"}
                     alt="cover"
