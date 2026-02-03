@@ -100,7 +100,31 @@ const PaymentPage = ({ username }) => {
 
         // var rzp1 = new Razorpay(options);
         // rzp1.open();
+
+        
         alert("Payment gateway coming soon 🚧");
+        await initiate(
+            Number(paymentform.amount) * 100,
+            username,
+            paymentform
+        )
+
+        toast('Thanks for your donation!', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+        // 🔁 RE-FETCH PAYMENTS AFTER SUCCESS
+        const updatedPayments = await fetchpayments(username)
+        setPayments(updatedPayments)
+
+        //clear the form
         setPaymentform({
             name: "",
             message: "",
@@ -203,7 +227,7 @@ const PaymentPage = ({ username }) => {
                             )}
 
                             <ul className="space-y-3">
-                                {payments.map((p) => (
+                                {payments.slice(0, 5).map((p) => (
                                     <li key={p._id} className="flex items-center gap-3">
                                         <img src="/avatar.gif" alt="" className="w-8 h-8 rounded-full" />
                                         <p className="text-sm">
@@ -278,18 +302,21 @@ const PaymentPage = ({ username }) => {
                             </div>
 
                             {/* Quick Buttons */}
-                            <div className="flex gap-3 mt-6">
+                            {/* have to work on these buttons later */}
+                            {/* <div className="flex gap-3 mt-6">
                                 {[10, 20, 30].map((amt) => (
                                     <button
                                         key={amt}
-                                        onClick={() => pay(amt * 100)}
+                                        onClick={() => {
+                                            pay(Number(amt) * 100)
+                                        }}
                                         disabled={paymentform.name?.length < 3 || paymentform.message?.length < 4}
                                         className="flex-1 bg-gray-100 rounded-lg py-2 text-sm hover:bg-gray-200 disabled:opacity-50"
                                     >
                                         Pay ₹{amt}
                                     </button>
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
